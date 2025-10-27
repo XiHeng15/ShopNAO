@@ -1,0 +1,23 @@
+.navbar {
+    display: flex; /* arrage logo and title in flexible row*/
+    align-items: center; /*allign litems on header from the left*/
+    gap: 10px; /* 10 pixel gap between items*/
+    padding: 5cqb 5px; /* padding from edges*/
+    position: fixed; /* stick to top left corner*/
+    top: 0; /* position to top */
+    left: 0; /* position left */
+    width: 100%; /*wdith across screen*/
+    background-color: yellow; /* nav colour*/
+    z-index: 1000; /* height on page */
+}
+
+.navbar img{
+    height: 40px; /*adjust logo size*/
+    width: auto;
+
+}
+
+.navbar h1 {
+    font-size: 1rem; /* adjust title size */
+    margin: 0;
+}
