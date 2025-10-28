@@ -2,11 +2,12 @@
     display: flex; /* arrage logo and title in flexible row*/
     align-items: center; /*allign litems on header from the left*/
     gap: 10px; /* 10 pixel gap between items*/
-    padding: 5cqb 5px; /* padding from edges*/
+    padding: 5px; /* padding from edges*/
     position: fixed; /* stick to top left corner*/
     top: 0; /* position to top */
     left: 0; /* position left */
     width: 100%; /*wdith across screen*/
+    height: fit-content; /* height fits content */
     background-color: yellow; /* nav colour*/
     z-index: 1000; /* height on page */
 }
