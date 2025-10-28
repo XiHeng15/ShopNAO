@@ -23,3 +23,7 @@ Project Backlog:
         
         - Checkout	        Shopping cart + Stripe checkout, backend 
         - Login/Register	Auth UI + backend connection
+
+	Miscellaneous:
+
+		- Rename repo to ShopNAO lol
