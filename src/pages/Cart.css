@@ -1,0 +1,14 @@
+.Cart{
+    text-align: center;
+}
+
+.Cart-header{
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #333333;
+}
