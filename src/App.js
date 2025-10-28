@@ -1,18 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Browse from './pages/browse';
+import Cart from './pages/cart';
 import Navbar from './components/navbar';
+import "./App.css"
 
 function App() {
   return (
-    <div className="App">
-      <Navbar className="Navbar"/> {/*Puts navbar at top*/}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to SHOPNAO!
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path ="/browse" element={<Browse/>}/>
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </Router>
   );
 }
 
