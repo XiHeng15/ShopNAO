@@ -18,7 +18,44 @@
 
 }
 
+.navbar-tabs{
+    position: fixed;
+    right: 0;
+    padding: 10px;
+    display: flex; /* arrange tabs in flexible row */
+    gap: 15px; /* 15 pixel gap between tabs */
+}
+
 .navbar h1 {
+    display: flex; /* arrange title in flexible row */
+    align-self: center;
+    gap: 15px; /* 15 pixel gap between title and logo */
     font-size: 1rem; /* adjust title size */
     margin: 0;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.tab {
+  background-color: rgb(131, 1, 206);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 5px 10px;
+  transition: background-color 0.5s ease;
+  text-decoration: none; /* REMOVE UNDERLINES FROM NAVLINK */
+}
+
+.tab:hover {
+    transition: background-color lightgray 0.1s, ease;
+    background-color: lightgray;
+    transform:scale(1.1);
+    
 }
