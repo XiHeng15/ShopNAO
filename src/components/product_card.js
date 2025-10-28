@@ -5,7 +5,7 @@ export default function ProductCard({ item_img_url, message, price }) {
   const [count, setCount] = useState(1);
 
   return (
-    <div className="App">
+    <div className="Card">
       <h1>{message}</h1>
       <Item item_img_url={item_img_url} />
       <h3>${price * count}</h3>
