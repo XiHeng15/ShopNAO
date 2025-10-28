@@ -1,10 +1,20 @@
-.App {
-  font-family: sans-serif;
+.Card {
+  background-color: #9b2cff; 
+  color: white;
   text-align: center;
+  border-radius: 12px;
+  padding: 10px;
+  width: 250px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.rectangle {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background: blue;
+
+.Card Item {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  margin: 10px 0;
 }
