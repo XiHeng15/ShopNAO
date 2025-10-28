@@ -7,9 +7,14 @@
   pointer-events: none;
 }
 
+.Home-logo-container{
+    animation: Home-logo-pulse infinite 1s alternate;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .Home-logo {
     animation: Home-logo-spin infinite 20.00001s linear;
+
   }
 }
 
@@ -27,8 +32,18 @@
 @keyframes Home-logo-spin {
   from {
     transform: rotate(0deg);
+    
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes Home-logo-pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
   }
 }
