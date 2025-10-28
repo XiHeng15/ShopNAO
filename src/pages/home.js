@@ -6,7 +6,9 @@ function Home() {
   return (
     <div className="Home">
       <header className="Home-header">
-        <img src={logo} className="Home-logo" alt="logo" />
+        <div className="Home-logo-container">
+            <img src={logo} className="Home-logo" alt="logo" />
+        </div>
         <p>
           Welcome to SHOPNAO!
         </p>
