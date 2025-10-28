@@ -1,0 +1,10 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.rectangle {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: blue;
+}
