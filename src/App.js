@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          ShopNAO. The best shopping experience North of the equator.
+          Welcome to SHOPNAO!
         </p>
       </header>
     </div>
