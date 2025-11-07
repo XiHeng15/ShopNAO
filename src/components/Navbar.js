@@ -16,7 +16,7 @@ export default function Navbar(){
                 <NavLink to="/cart" className="tab">Cart</NavLink>
                 <NavLink to="/about" className="tab">About</NavLink>
             </div>
-        </nav>
+        </nav> 
     );
     
 }
