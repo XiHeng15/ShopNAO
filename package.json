@@ -53,5 +53,6 @@
   "bugs": {
     "url": "https://github.com/XiHeng15/ShopNAO/issues"
   },
-  "homepage": "https://github.com/XiHeng15/ShopNAO#readme"
+  "homepage": "https://github.com/XiHeng15/ShopNAO#readme",
+  "devDependencies": {}
 }
