@@ -22,7 +22,8 @@ import shopifyRoutes from "./routes/shopify.js";
 require('dotenv').config();
 
 const app = express();
-const PORT = parseInt(process.env.PORT, 10) || 3000;
+const PORT = 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
 // Middleware
