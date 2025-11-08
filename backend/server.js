@@ -3,6 +3,10 @@ const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 
+import express from "express";
+import dotenv from "dotenv";
+import shopifyRoutes from "./routes/shopify.js";
+
 /**
  * Simple Express backend server
  * Save as: C:/Users/ludwi/OneDrive/Documents/GitHub/CP317/backend/server.js
@@ -26,6 +30,7 @@ app.use(helmet());
 app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
 app.use(morgan('dev'));
+app.use("/api/shopify", shopifyRoutes);
 
 // In-memory store (replace with DB in production)
 let nextId = 1;
