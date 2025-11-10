@@ -4,11 +4,13 @@ import { useState } from "react";
 
 export default function App() {
   return (
-    <div className="Card">
-      <header>
-        <Login />
-      </header>
-    </div>
+    <header className="Card-header">
+      <div className="Card">
+        <header>
+          <Login />
+        </header>
+      </div>
+    </header>
   );
 }
 
