@@ -7,6 +7,9 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.4",
@@ -36,5 +39,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "ShopNAO Shopping Website\r Project by WonUpped, XiHeng15, PlantEnjoyer, ,\r To start, see READMEREACT.md for instructions",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XiHeng15/ShopNAO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/XiHeng15/ShopNAO/issues"
+  },
+  "homepage": "https://github.com/XiHeng15/ShopNAO#readme",
+  "devDependencies": {}
 }
