@@ -12,8 +12,8 @@ function Browse() {
     <div className="Browse">
       <header className="Browse-header">
         <h1>Browse SHOPNAO</h1>
-        <div className = "ProductCard"> <ProductCard message="Hammer" item_img_url={item_img_url} price={13} reviewAvg={3.2} reviewCount={4}/></div>
-        <div className = "ProductCard"> <ProductCard message="Cooler Hammer" item_img_url={item_img_url} price={17} reviewAvg={4.7} reviewCount={9}/></div>
+        <div className = "ProductCard"> <ProductCard message="Hammer" item_img_url={item_img_url} price={13}/></div>
+        <div className = "ProductCard"> <ProductCard message="Cooler Hammer" item_img_url={item_img_url} price={17}/></div>
       </header>
     </div>
   

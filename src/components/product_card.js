@@ -1,8 +1,8 @@
 import "./product_card.css";
 import { useState } from "react";
 
-//product-card component that shows a product (product info, image, price, review average, review count)
-export default function ProductCard({ item_img_url, message, price, reviewAvg, reviewCount }) {
+//product-card component that shows a product (product info, image, price)
+export default function ProductCard({ item_img_url, message, price }) {
   const [count, setCount] = useState(1); //tracks the item quantity
 
   return (
@@ -13,9 +13,6 @@ export default function ProductCard({ item_img_url, message, price, reviewAvg, r
       <h3>${price * count}</h3>
       <p>Quantity: {count}</p>
       <Counter count={count} setCount={setCount} />
-      <h3>
-        Rated {reviewAvg} /10 by {reviewCount} verified customers!
-      </h3>
       <Button />
     </div> 
   ); 
