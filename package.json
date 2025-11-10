@@ -1,5 +1,5 @@
 {
-  "name": "shopnao",
+  "name": "ShopNAO",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -49,10 +49,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/XiHeng15/ShopNAO/issues"
   },
-  "homepage": "https://github.com/XiHeng15/ShopNAO#readme",
   "devDependencies": {}
 }

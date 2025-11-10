@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Browse.css"
-import "../components/product_card"
-import ProductCard from "../components/product_card"
+import "../components/product_card.js"
+import ProductCard from "../components/product_card.js"
 
 function Browse() {
   const item_img_url =
