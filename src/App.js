@@ -1,9 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Browse from './pages/Browse';
-import Cart from './pages/Cart';
-import About from './pages/About';
-import Navbar from './components/Navbar';
+import Home from './pages/Home.js';
+import Browse from './pages/Browse.js';
+import Cart from './pages/Cart.js';
+import About from './pages/About.js';
+import Login from './pages/Login.js';
+
+import Navbar from './components/Navbar.js';
+
 import "./App.css"
 
 function App() {
