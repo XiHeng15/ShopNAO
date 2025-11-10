@@ -4,8 +4,8 @@ import "./Login.css"
 
 export default function App() {
   return (
-    <div className="Card">
-      <header>
+    <div className="Login">
+      <header className="Login-header">
         <Login />
       </header>
     </div>
@@ -50,4 +50,5 @@ function handleClick() {
   alert(
     "Hopefully we can ping the database to verify for correct usernames/passwords"
   ); //temporary alert msg when clicked
+  //lol ur funny
 }
