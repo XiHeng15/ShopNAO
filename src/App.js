@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Browse from './pages/Browse';
 import Cart from './pages/Cart';
 import About from './pages/About';
+import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import "./App.css"
 
