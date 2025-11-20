@@ -1,0 +1,41 @@
+
+.Login{
+  text-align: center;
+  font-family: sans-serif;
+  padding: 0;
+}
+
+
+.Login-header{
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #333333;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.Card {
+  background-color: rgb(126, 16, 136);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 12px;
+  padding: 10px;
+  width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

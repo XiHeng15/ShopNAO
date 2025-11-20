@@ -1,0 +1,39 @@
+.Browse{
+    text-align: center;
+}
+
+.Browse-header {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #333333;
+}
+
+.ProductCard{
+  display: flex;
+  justify-content: center; /* legacy support — keep centered when used */
+  align-items: center;
+}
+
+/* Responsive grid for product listing */
+.ProductGrid {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+}
+
+.ProductItem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+ 
