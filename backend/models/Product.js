@@ -33,7 +33,7 @@ const productSchema = new mongoose.Schema({
 
 // 2. Create the Model
 // This creates the 'Product' collection in MongoDB automatically
-const Product = mongoose.model('Product', userSchema);
+const Product = mongoose.model('Product', productSchema);
 
 // 3. Export the Model so other files can use it
 module.exports = Product;
