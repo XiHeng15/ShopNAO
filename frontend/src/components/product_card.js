@@ -1,13 +1,15 @@
 import "./product_card.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //product-card component that shows a product (product info, image, price, review average, review count)
-export default function ProductCard({ item_img_url, message, price, reviewAvg, reviewCount }) {
+export default function ProductCard({ id, item_img_url, message, price, reviewAvg, reviewCount }) {
   const [count, setCount] = useState(1); //tracks the item quantity
+  const navigate = useNavigate();
 
   return (
     /* displays what is shown on the product screen */
-    <div className="Card"> 
+    <div className="Card" onClick={() => id && navigate(`/product/${id}`)}>
       <h1>{message}</h1>
       <Item item_img_url={item_img_url} />
       <h3>${price * count}</h3>
@@ -30,7 +32,7 @@ function handleClick() {
 function Button() {
   return (
     <div>
-      <button onClick={handleClick}> Add to cart NAO </button> 
+      <button onClick={(e) => { e.stopPropagation(); handleClick(); }}> Add to cart NAO </button> 
     </div>
   );
 }

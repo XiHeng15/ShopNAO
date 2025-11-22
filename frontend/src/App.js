@@ -4,6 +4,7 @@ import Browse from './pages/Browse.js';
 import Cart from './pages/Cart.js';
 import About from './pages/About.js';
 import Login from './pages/Login.js';
+import Product from './pages/Product.js';
 
 import Navbar from './components/Navbar.js';
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/browse" element={<Browse/>}/>
+        <Route path="/product/:id" element={<Product/>}/>
         <Route path="/cart" element={<Cart />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/login" element={<Login />}/>

@@ -15,9 +15,25 @@
 
 .ProductCard{
   display: flex;
-  justify-content: center; /* centers horizontally */
-  align-items: center;     /* centers vertically if the container has height */
-  flex-wrap: wrap;
-  gap: 20px; /* spacing between cards */
-  margin-top: 20px;
+  justify-content: center; /* legacy support — keep centered when used */
+  align-items: center;
 }
+
+/* Responsive grid for product listing */
+.ProductGrid {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+}
+
+.ProductItem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+ 

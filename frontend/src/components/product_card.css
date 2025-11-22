@@ -9,9 +9,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
-.Card Item {
+.Card img {
   width: 80%;
   height: auto;
   border-radius: 8px;
