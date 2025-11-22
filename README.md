@@ -6,9 +6,10 @@ cd to backend, create a .env file and fill in with this format:
 
 --------------------------------------------------------------------------------
 
-# Must replace <user>, <password>, and <link> with your MongoDB Atlas details.
-MONGO_URI="mongodb+srv://<user>:<password><link>
-PORT=<choose a port>
+# Must replace (user), (password), and (link) with your MongoDB Atlas details.
+
+MONGO_URL="mongodb+srv://(user):(password)(link)
+PORT=(choose a port)
 
 --------------------------------------------------------------------------------
 
