@@ -12,7 +12,11 @@ connectDB();
 // Middleware: Allows server to parse JSON bodies (for POST/PUT requests) - modification of our database, such as adding to cart or writing a review
 app.use(express.json());
 
-// Main Root Route (Test)
+//Routes
+app.use('/api/products', require('./routes/products'));
+app.use('/api/auth', require('./routes/auth'));
+
+// test root route
 app.get('/', (req, res) => {
     res.send('ShopNAO API is running!');
 });
