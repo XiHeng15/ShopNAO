@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // 1. Define the Schema (The Template)
 const productSchema = new mongoose.Schema({
     price: {
-        type: Float16Array,
+        type: Number,//fixed, changed from Float16Array to Number
         required: true,  // This field must exist
     },
     message: { //AKA name but named message to keep consistency across project
@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
         required: true,  // This field must exist
     },
     id: {
-        type: Int32Array,
+        type: Number, //Use number instead of Int32 Array
         required: true,
         unique: true,    // No two products can have the same ID
     },
@@ -20,14 +20,27 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
 
-    review: {
-        score: Int8Array,
-        score_avg: Int8Array,
-        score_count: Int8Array,
-    },
+    review: [reviewSchema], // To store array of reviews
+    //score_avg and score_count will be moved to front end and calculated there.
     createdAt: {
         type: Date,
         default: Date.now // Automatically sets the date when created
+    }
+});
+
+// additional schema- reviewSchema, for storing multiple reviews of a product
+
+const reviewSchema = new mongoose.Schema({
+    score: {
+        type: Number,
+        required: true
+    },
+
+    comment: String,
+    account: String,
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
