@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Browse.css";
 import "../components/product_card.css";
-import { PRODUCTS } from "./Browse.js";
 
 function Product() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
 
-  const product = PRODUCTS[id] || { message: id || "Unknown Product", price: 0, item_img_url: "", reviewAvg: 0, reviewCount: 0 };
+  useEffect(() => {
+    // replace with your API endpoint
+    fetch(`/api/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data))
+      .catch((err) => console.error(err));
+  }, [id]);
 
-function handleClick() {
-  alert("Item(s) are NAO purchased :D"); //temporary alert msg when clicked
-}
+  if (!product) return <div>Loading...</div>;
+
+  function handleClick() {
+    alert("Item(s) are NAO purchased :D"); // temporary
+  }
 
   return (
     <div className="Browse">

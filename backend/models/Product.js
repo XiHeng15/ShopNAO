@@ -1,5 +1,21 @@
 const mongoose = require('mongoose');
 
+// additional schema- reviewSchema, for storing multiple reviews of a product
+
+const reviewSchema = new mongoose.Schema({
+    score: {
+        type: Number,
+        required: true
+    },
+
+    comment: String,
+    account: String,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 // 1. Define the Schema (The Template)
 const productSchema = new mongoose.Schema({
     price: {
@@ -28,21 +44,7 @@ const productSchema = new mongoose.Schema({
     }
 });
 
-// additional schema- reviewSchema, for storing multiple reviews of a product
 
-const reviewSchema = new mongoose.Schema({
-    score: {
-        type: Number,
-        required: true
-    },
-
-    comment: String,
-    account: String,
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
 
 // 2. Create the Model
 // This creates the 'Product' collection in MongoDB automatically

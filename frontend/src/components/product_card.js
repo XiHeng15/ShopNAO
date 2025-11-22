@@ -3,21 +3,30 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //product-card component that shows a product (product info, image, price, review average, review count)
-export default function ProductCard({ id, item_img_url, message, price, reviewAvg, reviewCount }) {
+export default function ProductCard({ id, img, message, price, review}) {
   const [count, setCount] = useState(1); //tracks the item quantity
   const navigate = useNavigate();
+
+  const avgRating = //calculate average rating if review array exists for prod
+    review && review.length > 0
+      ? (review.reduce((acc, r) => acc + r.score, 0) / review.length).toFixed(1)
+      : null;
 
   return (
     /* displays what is shown on the product screen */
     <div className="Card" onClick={() => id && navigate(`/product/${id}`)}>
       <h1>{message}</h1>
-      <Item item_img_url={item_img_url} />
+      <Item img={img} />
       <h3>${price * count}</h3>
       <p>Quantity: {count}</p>
       <Counter count={count} setCount={setCount} />
-      <h3>
-        Rated {reviewAvg} /10 by {reviewCount} verified customers!
-      </h3>
+      {avgRating ? (
+        <h3>
+          Rated {avgRating} /10 by {review.length} verified customers!
+        </h3>
+      ) : (
+        <h3>No reviews yet</h3>
+      )}
       <Button />
     </div> 
   ); 
@@ -38,8 +47,8 @@ function Button() {
 }
 
 //product image
-function Item({ item_img_url }) {
-  return <img src={item_img_url} alt="" />;
+function Item({ img }) {
+  return <img src={img} alt="" />;
 }
 
 //Product quantity counter based on + or - button clicks
