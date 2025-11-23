@@ -1,6 +1,6 @@
-import React from 'react';
-import { useState } from "react"; //Aaron you need this import statement to use useState
-import "./Login.css"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function App() {
   return (
@@ -13,42 +13,63 @@ export default function App() {
 }
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");   
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  function handleUsernameChange(e) {
-    setUsername(e.target.value);
-  }
+  async function handleLogin() {
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Login failed");
+        return;
+      }
+
+      //Stores JWT in localStorage!!
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userName", data.name);
+      localStorage.setItem("userId", data.userId);
+
+      alert("Login success! Welcome " + data.name);
+
+      // Here we could optionally redirect or update state to show logged-in UI for business logic
+      navigate("/browse");
+
+    } catch (err) {
+      alert("Server error: " + err.message);
+    }
   }
 
   return (
     <div className="Card">
       <h2>Log in to Shop NAO</h2>
+
       <label>
-        Username: <input value={username} onChange={handleUsernameChange} />
+        Email:
+        <input 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          type="email"
+        />
       </label>
+
       <label>
-        Password: <input value={password} onChange={handlePasswordChange} />
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </label>
-      <Button />
+
+      <button onClick={handleLogin}>Sign In</button>
     </div>
   );
-}
-
-function Button() {
-  return (
-    <div>
-      <button onClick={handleClick}> Sign In </button>
-    </div>
-  );
-}
-
-function handleClick() {
-  alert(
-    "Hopefully we can ping the database to verify for correct usernames/passwords"
-  ); //temporary alert msg when clicked
-  //lol ur funny
 }
