@@ -38,6 +38,15 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order' // Links to the 'Order' collection
   }],
+
+  cart: [ // Added cart to user model for storing products added to cart
+  {
+    product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    quantity: { type: Number, default: 1 }
+  }
+  ],
+
+
   createdAt: {
     type: Date,
     default: Date.now // Automatically sets the date when created
