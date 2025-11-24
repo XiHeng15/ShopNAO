@@ -1,51 +1,71 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext.js";
 import "./Cart.css";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
-  const token = localStorage.getItem("token");
+  const { user, logout } = useContext(UserContext);
 
-  // Fetch cart on load
   useEffect(() => {
-    if (!token) return;
+    if (!user.token) return;
+
     fetch("http://localhost:5000/api/cart", {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${user.token}` },
     })
-      .then(res => res.json())
-      .then(data => setCart(data))
+      .then((res) => {
+        if (res.status === 401) {
+          logout(); // auto logout on invalid token
+          throw new Error("Invalid token, logged out");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) setCart(data);
+        else if (Array.isArray(data.cart)) setCart(data.cart);
+        else setCart([]);
+      })
       .catch(console.error);
-  }, [token]);
+  }, [user.token, logout]);
 
   const updateQuantity = (productId, quantity) => {
-    if (quantity < 1) return; // prevent negative or 0 quantity
+    if (!user.token || quantity < 1) return;
+
     fetch("http://localhost:5000/api/cart/update", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json", 
-        Authorization: `Bearer ${token}` 
+        Authorization: `Bearer ${user.token}` 
       },
       body: JSON.stringify({ productId, quantity }),
     })
-      .then(res => res.json())
-      .then(data => setCart(data.cart))
+      .then((res) => {
+        if (res.status === 401) { logout(); throw new Error("Invalid token"); }
+        return res.json();
+      })
+      .then((data) => setCart(Array.isArray(data.cart) ? data.cart : []))
       .catch(console.error);
   };
 
   const removeItem = (productId) => {
+    if (!user.token) return;
+
     fetch("http://localhost:5000/api/cart/remove", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json", 
-        Authorization: `Bearer ${token}` 
+        Authorization: `Bearer ${user.token}` 
       },
       body: JSON.stringify({ productId }),
     })
-      .then(res => res.json())
-      .then(data => setCart(data.cart))
+      .then((res) => {
+        if (res.status === 401) { logout(); throw new Error("Invalid token"); }
+        return res.json();
+      })
+      .then((data) => setCart(Array.isArray(data.cart) ? data.cart : []))
       .catch(console.error);
   };
 
-  const totalPrice = cart.reduce(
+  const totalPrice = (Array.isArray(cart) ? cart : []).reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
@@ -54,7 +74,7 @@ export default function Cart() {
     <div className="Cart">
       <h2>Your Cart</h2>
       {cart.length === 0 && <p>Your cart is empty</p>}
-      {cart.map(item => (
+      {cart.map((item) => (
         <div key={item.product._id} className="CartItem">
           <img src={"http://localhost:5000" + item.product.img} alt={item.product.message} />
           <h3>{item.product.message}</h3>
@@ -63,7 +83,7 @@ export default function Cart() {
             type="number"
             min={1}
             value={item.quantity}
-            onChange={e => updateQuantity(item.product._id, parseInt(e.target.value))}
+            onChange={(e) => updateQuantity(item.product._id, parseInt(e.target.value))}
           />
           <button onClick={() => removeItem(item.product._id)}>Remove</button>
         </div>
