@@ -21,6 +21,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //Routes
 app.use('/api/products', require('./routes/products'));
 app.use('/api/auth', require('./routes/auth'));
+app.use("/api/cart", require("./routes/cart")); //added cart api route
 
 
 // test root route
