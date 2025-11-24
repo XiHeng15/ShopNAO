@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext.js";
 import logo from "../logo.svg";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const name = localStorage.getItem("userName");  // get user name
-  const role = localStorage.getItem("role");  // for showing business tab
+  const navigate = useNavigate();
+  const { user, logout } = useContext(UserContext);
 
   return (
     <nav className="navbar">
@@ -16,19 +18,20 @@ export default function Navbar() {
       <div className="navbar-tabs">
         <NavLink to="/" className="tab" end>Home</NavLink>
         <NavLink to="/browse" className="tab">Browse</NavLink>
-        
-        {role === "business" && (
-        <NavLink to="/BusinessDashboard" className="tab">
-            Business Dashboard
-        </NavLink>
+        {user.role === "business" && (
+          <NavLink to="/business" className="tab">
+            Business
+          </NavLink>
         )}
-        
         <NavLink to="/cart" className="tab">Cart</NavLink>
         <NavLink to="/about" className="tab">About</NavLink>
-        {!name ? (
+
+        {!user.name ? (
           <NavLink to="/login" className="tab">Login</NavLink>
         ) : (
-          <span className="tab">Hello, {name}!</span>
+          <span className="tab" onClick={() => { logout(); navigate("/login"); }} style={{cursor:"pointer"}}>
+            Hello, {user.name}! (Logout)
+          </span>
         )}
       </div>
     </nav>

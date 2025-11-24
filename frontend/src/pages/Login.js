@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext.js"; // import context
 import "./Login.css";
 
 export default function App() {
@@ -16,6 +17,7 @@ function Login() {
   const [email, setEmail] = useState("");   
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = useContext(UserContext); // use context
 
   async function handleLogin() {
     try {
@@ -32,20 +34,20 @@ function Login() {
         return;
       }
 
-      //Stores JWT in localStorage!!
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userName", data.name);
-      localStorage.setItem("userId", data.userId);
-      localStorage.setItem("role", data.role); // store user type
+      // Update UserContext and localStorage
+      login({
+        token: data.token,
+        name: data.name,
+        role: data.role,
+      });
 
       alert("Login success! Welcome " + data.name);
 
-      // Added redirect to show logged-in UI for business logic
-
+      // Redirect based on role
       if (data.role === "business") {
-        navigate("/business"); // Business dashboard page
+        navigate("/business");
       } else {
-        navigate("/browse"); // Regular customer page
+        navigate("/browse");
       }
 
     } catch (err) {
@@ -77,10 +79,12 @@ function Login() {
 
       <button onClick={handleLogin}>Sign In</button>
 
-      <button onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: "blue" }}>
+      <button 
+        onClick={() => navigate("/signup")} 
+        style={{ cursor: "pointer", color: "blue" }}
+      >
         Don't have an account? Sign up
       </button>
-
     </div>
   );
 }
