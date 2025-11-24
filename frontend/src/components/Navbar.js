@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import logo from "../logo.svg";
 import "./Navbar.css";
 
+const role = localStorage.getItem("role");
+
 export default function Navbar(){
     return(
         <nav className="navbar">
@@ -13,6 +15,7 @@ export default function Navbar(){
             <div className="navbar-tabs">
                 <NavLink to="/" className="tab" end>Home</NavLink>
                 <NavLink to="/browse" className="tab">Browse</NavLink>
+                {role === "business" && <NavLink to="/business" className ="tab">Business</NavLink>}
                 <NavLink to="/cart" className="tab">Cart</NavLink>
                 <NavLink to="/about" className="tab">About</NavLink>
                 <NavLink to="/login" className="tab">Login</NavLink>

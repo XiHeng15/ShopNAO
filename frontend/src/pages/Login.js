@@ -36,11 +36,17 @@ function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("userName", data.name);
       localStorage.setItem("userId", data.userId);
+      localStorage.setItem("role", data.role); // store user type
 
       alert("Login success! Welcome " + data.name);
 
-      // Here we could optionally redirect or update state to show logged-in UI for business logic
-      navigate("/browse");
+      // Added redirect to show logged-in UI for business logic
+
+      if (data.role === "business") {
+        navigate("/business"); // Business dashboard page
+      } else {
+        navigate("/browse"); // Regular customer page
+      }
 
     } catch (err) {
       alert("Server error: " + err.message);
@@ -70,6 +76,11 @@ function Login() {
       </label>
 
       <button onClick={handleLogin}>Sign In</button>
+
+      <button onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: "blue" }}>
+        Don't have an account? Sign up
+      </button>
+
     </div>
   );
 }

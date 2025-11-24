@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 8
   },
+
+  role: { //Added role so that we can have business and customer users.
+    type: String,
+    enum: ['customer', 'business'],
+    default: 'customer'
+  },
+
+
   // Embedding: Address is stored inside the User document
   address: {
     street: String,
