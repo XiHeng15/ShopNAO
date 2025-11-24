@@ -48,7 +48,8 @@ function Button() {
 
 //product image
 function Item({ img }) {
-  return <img src={img} alt="" />;
+  const backendURL = "http://localhost:5000"; // backend base URL
+  return <img src={backendURL + img} alt="" />;
 }
 
 //Product quantity counter based on + or - button clicks

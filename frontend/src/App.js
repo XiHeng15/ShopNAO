@@ -5,6 +5,10 @@ import Cart from './pages/Cart.js';
 import About from './pages/About.js';
 import Login from './pages/Login.js';
 import Product from './pages/Product.js';
+import Signup from './pages/Signup.js';
+import BusinessDashboard from './pages/BusinessDashboard.js';
+import AddProduct from './pages/AddProduct.js';
+
 
 import Navbar from './components/Navbar.js';
 
@@ -21,6 +25,10 @@ function App() {
         <Route path="/cart" element={<Cart />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/business" element={<BusinessDashboard />} />
+        <Route path="/add-product" element={<AddProduct />} />
+
       </Routes>
     </Router>
   );

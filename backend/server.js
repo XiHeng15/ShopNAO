@@ -3,6 +3,7 @@ require('dotenv').config(); // Load .env file for our mongo credentials
 const express = require('express');
 const connectDB = require('./config/db'); // Import DB connection
 const cors = require("cors");
+const path = require('path');
 
 
 const app = express();
@@ -15,6 +16,7 @@ connectDB();
 //Allows server to talk on multiple ports
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //Routes
 app.use('/api/products', require('./routes/products'));

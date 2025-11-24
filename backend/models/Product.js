@@ -36,6 +36,9 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
 
+
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false }, // added owner reference to the schema so that businesses know their own products - made it false for testing purposes, also to allow us to sell our own branded products without making a business acount. (something amazon would prolly do).
+
     review: [reviewSchema], // To store array of reviews
     //score_avg and score_count will be moved to front end and calculated there.
     createdAt: {
