@@ -1,15 +1,25 @@
 .Card {
-  background-color: #9b2cff; 
+  background-color: #9b2cff;
   color: white;
   text-align: center;
   border-radius: 12px;
   padding: 10px;
-  width: 250px;
-  margin: 10px auto;
+  width: 100%;             /* fill grid cell */
+  max-width: 250px;        /* cap card width */
+  margin: 0 auto 20px auto; /* center card + spacing below */
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  box-sizing: border-box;
+  word-wrap: break-word;   /* wrap long text */
+  overflow-wrap: break-word;
+}
+
+.Card h1, .Card h3, .Card p {
+  white-space: normal;     /* allow wrapping */
+  text-overflow: clip;
+  margin: 5px 0;
 }
 
 .Card img {
@@ -18,4 +28,24 @@
   border-radius: 8px;
   object-fit: contain;
   margin: 10px 0;
+}
+
+.Card button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6b21a8;
+  color: white;
+  cursor: pointer;
+}
+
+.Card button:hover {
+  background-color: #7c3aed;
+}
+
+.Card h1 {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

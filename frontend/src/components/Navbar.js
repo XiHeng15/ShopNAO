@@ -12,7 +12,8 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <img src={logo} alt="Logo" className="logo"/>
-        <h1 className="title">ShopNAO | Only the best.</h1>
+        <h1 className="title">ShopNAO.
+          Only the best.</h1>
       </div>
 
       <div className="navbar-tabs">
@@ -30,7 +31,7 @@ export default function Navbar() {
           <NavLink to="/login" className="tab">Login</NavLink>
         ) : (
           <span className="tab" onClick={() => { logout(); navigate("/login"); }} style={{cursor:"pointer"}}>
-            Hello, {user.name}! (Logout)
+            Hello, {user.name.length > 10 ? user.name.slice(0,10) + "…" : user.name}! Logout?
           </span>
         )}
       </div>
