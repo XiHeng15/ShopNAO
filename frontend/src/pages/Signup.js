@@ -57,7 +57,7 @@ export default function Signup() {
 
             <label>Account Type:</label>
             <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="regular">Regular</option>
+            <option value="customer">Customer</option>
             <option value="business">Business</option>
             </select>
 
