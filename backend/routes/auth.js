@@ -33,6 +33,13 @@ router.post('/signup', async (req, res) => {
   const { name, email, password, address, role } = req.body;
 
   try {
+
+    if (!password || password.length < 8) { //added to prevent backend from accepting passwords less than 8 characters
+      return res.status(400).json({
+        message: "Password must be at least 8 characters long"
+      });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: 'Email already registered' });
 

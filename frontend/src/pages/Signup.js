@@ -10,11 +10,17 @@ export default function Signup() {
   const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [country, setCountry] = useState("");
-  const [role, setRole] = useState("regular"); //added role state for business vs customer
+  const [role, setRole] = useState("customer"); //added role state for business vs customer
   const navigate = useNavigate();
 
   async function handleSignup() {
     try {
+
+      if (!password || password.length < 8) { //prevent passwords less than 8 characters
+        alert("Password must be at least 8 characters");
+        return;
+      }
+
       const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,13 +53,14 @@ export default function Signup() {
             <h2>Create an Account</h2>
 
             <label>Name:</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} />
+            <input value={name} required onChange={(e) => setName(e.target.value)} />
 
             <label>Email:</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input value={email} required onChange={(e) => setEmail(e.target.value)}/>
+
 
             <label>Password:</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} />
 
             <label>Account Type:</label>
             <select value={role} onChange={(e) => setRole(e.target.value)}>
