@@ -35,13 +35,8 @@
   justify-content: space-between; /* left = logo/title, right = tabs */
   flex-grow: 0;
   align-items: center;
-<<<<<<< HEAD
-  padding: 0px 10px;
-    background-color: yellow; /* nav colour*/
-=======
   padding: 10px 20px;
     background-color: #ffc72c; /* nav colour*/
->>>>>>> 93927de72d22f56f2eed3f05dc202b512a33337d
     z-index: 1000; /* height on page */
 }
 
