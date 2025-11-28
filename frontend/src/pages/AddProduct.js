@@ -19,12 +19,19 @@ export default function AddProduct() {
       return;
     }
 
+    if (price < 0) { //prevent negative prices
+      alert("Price cannot be negative");
+      return;
+    }
+      
+
     const formData = new FormData();
     formData.append("message", message);
     formData.append("price", price);
     formData.append("image", image);
 
     try {
+
       const token = localStorage.getItem("token"); // JWT from login
 
       const res = await fetch("http://localhost:5000/api/products/add", {
