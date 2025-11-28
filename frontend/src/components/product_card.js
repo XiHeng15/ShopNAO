@@ -12,6 +12,16 @@ export default function ProductCard({ id, img, message, price, review }) {
     ? (review.reduce((acc, r) => acc + r.score, 0) / review.length).toFixed(1)
     : null;
 
+  // constant for when +/- is pressed
+  const handlePlusButton = async (e) => {
+    e.stopPropagation(); // prevent navigating to product page
+    setCount(count + 1)
+  };
+  const handleMinusButton = async (e) => {
+    e.stopPropagation(); // prevent navigating to product page
+    count > 1 && setCount(count - 1)
+  };
+
   // Add to cart function
   const handleAddToCart = async (e) => {
     e.stopPropagation(); // prevent navigating to product page
@@ -37,7 +47,7 @@ export default function ProductCard({ id, img, message, price, review }) {
       <Item img={img} />
       <h3>${(price * count).toFixed(2)}</h3>
       <p>Quantity: {count}</p>
-      <Counter count={count} setCount={setCount} />
+      <Counter count={count} setCount={setCount} handlePlusButton={handlePlusButton} handleMinusButton={handleMinusButton} />
       {avgRating ? (
         <h3>Rated {avgRating} /10 by {review.length} verified customers!</h3>
       ) : (
@@ -64,11 +74,12 @@ function Item({ img }) {
 }
 
 // Quantity counter
-function Counter({ count, setCount }) {
+function Counter({ count, setCount, handlePlusButton, handleMinusButton }) {
+
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => count > 1 && setCount(count - 1)}>-</button>
+      <button onClick={handlePlusButton}>+</button>
+      <button onClick={handleMinusButton}>-</button>
     </div>
   );
 }
