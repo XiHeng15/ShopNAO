@@ -85,6 +85,10 @@ router.post('/add', authenticateBusiness, upload.single('image'), async (req, re
     const owner = req.userId; // set by authenticateBusiness
     const img = req.file ? `/uploads/${req.file.filename}` : '';
 
+    if (price < 0) {
+      return res.status(400).json({ message: "Price cannot be negative" });
+    }
+
     const product = new Product({ price, message, owner, img, id });
     await product.save();
 
