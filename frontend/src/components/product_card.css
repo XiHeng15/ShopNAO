@@ -1,5 +1,5 @@
 .Card {
-  background-color: #9b2cff;
+  background-color: #660066;
   color: white;
   text-align: center;
   border-radius: 12px;
@@ -35,13 +35,13 @@
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
-  background-color: #6b21a8;
+  background-color: #660066;
   color: white;
   cursor: pointer;
 }
 
 .Card button:hover {
-  background-color: #7c3aed;
+  background-color: #c400c4
 }
 
 .Card h1 {
