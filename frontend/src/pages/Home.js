@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logo from '../SpinLogo.svg';
 import "./Home.css"
 
 function Home() {

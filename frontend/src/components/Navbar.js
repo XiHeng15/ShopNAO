@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext.js";
-import logo from "../logo.svg";
+import logo from "../Logo.svg";
 import "./Navbar.css";
 
 export default function Navbar() {

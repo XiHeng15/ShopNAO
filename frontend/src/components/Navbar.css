@@ -1,6 +1,6 @@
 
 .navbar img{
-    height: 40px; /*adjust logo size*/
+    height: 80px; /*adjust logo size*/
     width: auto; 
 
 }
@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between; /* left = logo/title, right = tabs */
   align-items: center;
-  padding: 10px 20px;
+  padding: 0px 10px;
     background-color: yellow; /* nav colour*/
     z-index: 1000; /* height on page */
 }
