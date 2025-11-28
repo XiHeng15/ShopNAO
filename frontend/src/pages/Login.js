@@ -81,7 +81,7 @@ function Login() {
 
       <button 
         onClick={() => navigate("/signup")} 
-        style={{ cursor: "pointer", color: "blue" }}
+        style={{ cursor: "pointer", color: "white" }}
       >
         Don't have an account? Sign up
       </button>
