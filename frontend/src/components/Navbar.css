@@ -12,7 +12,7 @@
   text-overflow: ellipsis;   /* truncate overflow */
   overflow: hidden;
   max-width: 350px;          /* controls length before overflow */
-  background-color: rgb(131, 1, 206);
+  background-color: #660066;
   border: none;
   color: white;
   font-size: 1rem;
@@ -24,8 +24,8 @@
 }
 
 .tab:hover {
-    transition: background-color lightgray 0.1s, ease;
-    background-color: lightgray;
+    transition: background-color #c500c5 0.1s, ease;
+    background-color: #c500c5;
     transform:scale(1.1);
     
 } 
@@ -33,9 +33,10 @@
 .navbar {
   display: flex;
   justify-content: space-between; /* left = logo/title, right = tabs */
+  flex-grow: 0;
   align-items: center;
   padding: 10px 20px;
-    background-color: yellow; /* nav colour*/
+    background-color: #ffc72c; /* nav colour*/
     z-index: 1000; /* height on page */
 }
 
@@ -46,6 +47,7 @@
 }
 
 .navbar-tabs {
+  padding: 5px 10px; /* allows for tab animations to work without causing tab scroll to take effect */
   display: flex;
   align-items: center;
   gap: 15px;
