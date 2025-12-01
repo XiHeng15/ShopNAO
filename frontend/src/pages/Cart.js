@@ -27,8 +27,8 @@ export default function Cart() {
       .catch(console.error);
   }, [user.token, logout]);
 
-  const updateQuantity = (productId, quantity) => {
-    if (!user.token || quantity < 1) return;
+  const updateQuantity = (productId, quantity, stock) => {
+    if (!user.token || quantity < 1 || quantity > stock) return;
 
     fetch("http://localhost:5000/api/cart/update", {
       method: "POST",
@@ -82,8 +82,9 @@ export default function Cart() {
           <input
             type="number"
             min={1}
+            max={item.product.stock}
             value={item.quantity}
-            onChange={(e) => updateQuantity(item.product._id, parseInt(e.target.value))}
+            onChange={(e) => updateQuantity(item.product._id, parseInt(e.target.value), item.product.stock)}
           />
           <button onClick={() => removeItem(item.product._id)}>Remove</button>
         </div>

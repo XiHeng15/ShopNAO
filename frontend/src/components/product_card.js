@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // product-card component
-export default function ProductCard({ id, img, message, price, review }) {
+export default function ProductCard({ id, img, message, price, review, stock }) {
   const [count, setCount] = useState(1); // quantity
   const navigate = useNavigate();
   const token = localStorage.getItem("token"); // JWT
@@ -15,7 +15,7 @@ export default function ProductCard({ id, img, message, price, review }) {
   // constant for when +/- is pressed
   const handlePlusButton = async (e) => {
     e.stopPropagation(); // prevent navigating to product page
-    setCount(count + 1)
+    count < stock && setCount(count + 1)
   };
   const handleMinusButton = async (e) => {
     e.stopPropagation(); // prevent navigating to product page
@@ -46,6 +46,9 @@ export default function ProductCard({ id, img, message, price, review }) {
       <h1>{message}</h1>
       <Item img={img} />
       <h3>${(price * count).toFixed(2)}</h3>
+      <p>Stock: {stock}</p>
+
+      <Button handleAddToCart={handleAddToCart} />
       <p>Quantity: {count}</p>
       <Counter count={count} setCount={setCount} handlePlusButton={handlePlusButton} handleMinusButton={handleMinusButton} />
       {avgRating ? (
@@ -53,7 +56,6 @@ export default function ProductCard({ id, img, message, price, review }) {
       ) : (
         <h3>No reviews yet</h3>
       )}
-      <Button handleAddToCart={handleAddToCart} />
     </div>
   );
 }

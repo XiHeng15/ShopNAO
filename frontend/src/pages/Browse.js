@@ -20,7 +20,13 @@ function Browse() {
       });
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) return( 
+    <div className="Loading">
+      <div className="LoadingBox">
+        <p>Loading products!</p>
+      </div>
+    </div>
+  );
 
   // Client-side filter for quick search (case-insensitive)
   const term = search.trim().toLowerCase();
@@ -46,9 +52,13 @@ function Browse() {
         </div>
 
         <div className="ProductGrid">
-          {filtered.length === 0 ? (
-            <p>No products found for "{search}"</p>
-          ) : (
+            {filtered.length === 0 ? (
+              search === "" ? (
+                <p>No products found.</p>
+              ) : (
+                <p>No products found for "{search}"</p>
+              )
+            ) : (
             filtered.map((product) => (
               <div className="ProductItem" key={product._id}>
                 <ProductCard {...product} id={product._id} />

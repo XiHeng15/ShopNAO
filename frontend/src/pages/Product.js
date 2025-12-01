@@ -29,7 +29,7 @@ export default function Product() {
   // constant for when +/- is pressed
   const handlePlusButton = async (e) => {
     e.stopPropagation(); // prevent navigating to product page
-    setCount(count + 1)
+    count < product.stock && setCount(count + 1)
   };
   const handleMinusButton = async (e) => {
     e.stopPropagation(); // prevent navigating to product page

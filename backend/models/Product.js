@@ -35,6 +35,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    stock: { //Added to keep track of stock
+        type: Number,
+        required: true,
+    },
 
 
     owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false }, // added owner reference to the schema so that businesses know their own products - made it false for testing purposes, also to allow us to sell our own branded products without making a business acount. (something amazon would prolly do).

@@ -6,6 +6,7 @@ export default function AddProduct() {
   const [message, setMessage] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
+  const [stock, setStock] = useState("")
   const navigate = useNavigate();
 
   // handle file input
@@ -14,7 +15,7 @@ export default function AddProduct() {
   };
 
   const handleSubmit = async () => {
-    if (!message || !price || !image) {
+    if (!message || !price || !image || !stock) {
       alert("Please fill in all required fields and select an image.");
       return;
     }
@@ -23,12 +24,18 @@ export default function AddProduct() {
       alert("Price cannot be negative");
       return;
     }
+
+    if (stock < 0) { //prevent negative stock
+      alert("Stock cannot be negative");
+      return;
+    }
       
 
     const formData = new FormData();
     formData.append("message", message);
     formData.append("price", price);
     formData.append("image", image);
+    formData.append("stock", stock);
 
     try {
 
@@ -76,6 +83,15 @@ export default function AddProduct() {
             onChange={(e) => setPrice(parseFloat(e.target.value))}
             min="0"          // prevents negative values
             step="0.01"      // allows cents
+          />
+
+          <label>Stock:</label>
+          <input
+            type="number"
+            value={stock}
+            onChange={(e) => setStock(parseFloat(e.target.value))}
+            min="0"          // prevents negative values
+            step="1"      // noy allows whole numbers
           />
 
           <label>Image:</label>

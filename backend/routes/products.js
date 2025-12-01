@@ -81,7 +81,7 @@ router.get('/:id', async (req, res) => {
 router.post('/add', authenticateBusiness, upload.single('image'), async (req, res) => {
   try {
     const id = Date.now();
-    const { price, message } = req.body;
+    const { price, message, stock } = req.body;
     const owner = req.userId; // set by authenticateBusiness
     const img = req.file ? `/uploads/${req.file.filename}` : '';
 
@@ -89,7 +89,11 @@ router.post('/add', authenticateBusiness, upload.single('image'), async (req, re
       return res.status(400).json({ message: "Price cannot be negative" });
     }
 
-    const product = new Product({ price, message, owner, img, id });
+    if (stock < 0) {
+      return res.status(400).json({message: "Stock cannot be negative"});
+    }
+
+    const product = new Product({ price, message, owner, img, id, stock });
     await product.save();
 
     res.status(201).json({ message: 'Product added!', product });
