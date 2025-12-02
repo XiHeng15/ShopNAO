@@ -2,26 +2,18 @@
     text-align: center;
     background-color: black;
 }
-.About img{
-    
-    height: 320px; /*adjust logo size*/
-    width: auto;
-    position: relative;
-    right: 30%;
-
-}
-
-.About p{
-
-    margin-left: 40%;
-    position: relative;
-    bottom: 230px;
-
-}
 
 .About-header {
-    margin-left: 10%;
-    margin-right: 10%;
+    
+    background-color: #660066;
+
+    border-radius: 12px;
+    padding: 10px;
+    width: 70%;
+    margin-left: 15%;
+
+    height: auto;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,4 +21,31 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: #ffffff;
+
+}
+
+.about-box {
+    
+    display: flex;             /* side-by-side layout */
+    align-items: center;       /* vertically align image + text */
+    gap: 20px;                 /* space between image and text */
+    
+    border: 2px solid #ccc;    /* visible box */
+    padding: 20px;             /* space inside */
+    border-radius: 12px;        /* rounded corners */
+    width: 75%;              /* set a width or let it auto-size */
+    background-color: #660066; /* light background */
+    margin: 20px auto;         /* center the box */
+
+}
+
+.about-box img {
+    width: 150px;              /* adjust image size */
+    display: block;            /* remove baseline spacing */
+    margin: 0 auto 15px;       /* center + spacing under image */
+}
+
+.about-box p {
+  flex: 1;                   /* let text take remaining space */
+  margin: 0;
 }
