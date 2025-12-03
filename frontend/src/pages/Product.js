@@ -54,14 +54,16 @@ export default function Product() {
     }
   };
 
-  return (
+  //NOTE: ProductContent container class allows image and details to appear beside eachother :3c
+  
+  return ( 
     <div className="ProductPage">
       
       <div className="ProductTitle">
         <h1>{product.message}</h1> 
       </div>
 
-      <div className="ProductContent">
+      <div className="ProductContent"> 
         <div className="ProductImage">
           <img 
             src={`http://localhost:5000${product.img}`}
@@ -86,6 +88,7 @@ export default function Product() {
 
         </div>
       </div>
+
     </div>
   );
 
