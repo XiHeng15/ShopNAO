@@ -1,14 +1,51 @@
 .About{
     text-align: center;
+    background-color: black;
 }
 
 .About-header {
+    
     background-color: black;
+
+    border-radius: 12px;
+    padding: 10px;
+    width: 70%;
+    margin-left: 15%;
+
+    height: auto;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: #333333;
+    color: #ffffff;
+
+}
+
+.about-box1 {
+    
+    display: flex;             /* side-by-side layout */
+    align-items: center;       /* vertically align image + text */
+    gap: 20px;                 /* space between image and text */
+    
+    border: 2px solid #ccc;       /* visible box */
+    padding: 20px;                  /* space inside */
+    border-radius: 12px;            /* rounded corners */
+    width: 75%;                     /* set a width or let it auto-size */
+    background-color: #660066;    /* light background */
+    margin: 20px auto;              /* center the box */
+
+}
+
+.about-box1 img {
+    width: 150px;              /* adjust image size */
+    display: block;            /* remove baseline spacing */
+    margin: 0 auto 15px;       /* center + spacing under image */
+}
+
+.about-box1 p {
+  flex: 1;                   /* let text take remaining space */
+  margin: 0;
 }

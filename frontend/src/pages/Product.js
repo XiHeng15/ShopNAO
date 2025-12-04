@@ -54,24 +54,30 @@ export default function Product() {
     }
   };
 
-  return (
+  //NOTE: ProductContent container class allows image and details to appear beside eachother :3c
+  
+  return ( 
     <div className="ProductPage">
-      <div className="ProductBox">
-        <img 
-          className="ProductImage"
-          src={`http://localhost:5000${product.img}`}
-          alt={product.message}
-        />
+      
+      <div className="ProductTitle">
+        <h1>{product.message}</h1> 
+      </div>
 
-        <div className="ProductDetails">
-          <h1>{product.message}</h1>
-          <h2>${product.price?.toFixed(2)}</h2>
-
-          {product.description && <p>{product.description}</p>}
-
-          <Button className ="AddToCart" handleAddToCart={handleAddToCart}/>
+      <div className="ProductContent"> 
+        <div className="ProductImage">
+          <img 
+            src={`http://localhost:5000${product.img}`}
+            alt={product.message}
+          />
         </div>
-        <div>
+      
+        
+        <div className="ProductDetails">
+          
+          <h2>${product.price?.toFixed(2)}</h2>
+          {product.description && <p>{product.description}</p>}
+          <Button className ="AddToCart" handleAddToCart={handleAddToCart}/>
+          
           <Counter count={count} setCount={setCount} handlePlusButton={handlePlusButton} handleMinusButton={handleMinusButton} />
           {avgRating ? (
             <h3>Rated {avgRating} /10 by {id.review.length} verified customers!</h3>
@@ -79,8 +85,10 @@ export default function Product() {
             <h3>No reviews yet</h3>
           )}
           <h2>Count: {count}</h2>
+
         </div>
       </div>
+
     </div>
   );
 
