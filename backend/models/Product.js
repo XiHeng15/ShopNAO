@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
         type: Number,//fixed, changed from Float16Array to Number
         required: true,  // This field must exist
     },
-    message: { //AKA name but named message to keep consistency across project
+    name: { //changed back to name instead of being called message lol
         type: String,
         required: true,  // This field must exist
     },

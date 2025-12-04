@@ -7,6 +7,7 @@ import Login from './pages/Login.js';
 import Product from './pages/Product.js';
 import Signup from './pages/Signup.js';
 import BusinessDashboard from './pages/BusinessDashboard.js';
+import OrderDashboard from './pages/OrderDashboard.js'; //added order dashboard
 import AddProduct from './pages/AddProduct.js';
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/business" element={<BusinessDashboard />} />
+        <Route path="/orders" element={<OrderDashboard />} />
         <Route path="/add-product" element={<AddProduct />} />
 
       </Routes>

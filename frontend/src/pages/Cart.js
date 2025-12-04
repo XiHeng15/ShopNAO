@@ -7,14 +7,14 @@ export default function Cart() {
   const { user, logout } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user.token) return;
+    if (!user?.token) return; //prevents error if user hasnt been initialized (errors from accessing cart when not logged in)
 
     fetch("http://localhost:5000/api/cart", {
       headers: { Authorization: `Bearer ${user.token}` },
     })
       .then((res) => {
         if (res.status === 401) {
-          logout(); // auto logout on invalid token
+          logout();
           throw new Error("Invalid token, logged out");
         }
         return res.json();
@@ -25,10 +25,10 @@ export default function Cart() {
         else setCart([]);
       })
       .catch(console.error);
-  }, [user.token, logout]);
+  }, [user?.token, logout]);
 
   const updateQuantity = (productId, quantity, stock) => {
-    if (!user.token || quantity < 1 || quantity > stock) return;
+    if (!user?.token || quantity < 1 || quantity > stock) return;
 
     fetch("http://localhost:5000/api/cart/update", {
       method: "POST",
@@ -47,7 +47,7 @@ export default function Cart() {
   };
 
   const removeItem = (productId) => {
-    if (!user.token) return;
+    if (!user?.token) return;
 
     fetch("http://localhost:5000/api/cart/remove", {
       method: "POST",
@@ -65,10 +65,51 @@ export default function Cart() {
       .catch(console.error);
   };
 
-  const totalPrice = (Array.isArray(cart) ? cart : []).reduce(
+  const totalPrice = (cart || []).reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
+
+  // Handle checkout
+  const handleCheckout = async () => {
+    if (!user?.token) return alert("You must be logged in");
+    if (!cart.length) return alert("Cart is empty");
+
+    const items = cart.map(item => ({
+      productId: item.product._id,
+      name: item.product.name, //changed to name
+      quantity: item.quantity,
+      priceAtPurchase: item.product.price,
+    }));
+
+    console.log("Checkout items:", items); // Debug: items sent to backend
+
+    try {
+      const res = await fetch("http://localhost:5000/api/payments/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({ items }),
+      });
+
+      const data = await res.json();
+      console.log("Stripe response:", data); // Debug Stripe session URL or error
+
+      if (data.url) {
+        console.log("Redirecting to Stripe Checkout...");
+        window.location.href = data.url;
+      } else if (data.error) {
+        alert("Checkout failed: " + data.error);
+      } else {
+        alert("Unexpected error during checkout");
+      }
+    } catch (err) {
+      console.error("Checkout request failed:", err);
+      alert("Checkout request failed, see console for details");
+    }
+  };
 
   return (
     <div className="Cart">
@@ -76,8 +117,8 @@ export default function Cart() {
       {cart.length === 0 && <p>Your cart is empty</p>}
       {cart.map((item) => (
         <div key={item.product._id} className="CartItem">
-          <img src={"http://localhost:5000" + item.product.img} alt={item.product.message} />
-          <h3>{item.product.message}</h3>
+          <img src={"http://localhost:5000" + item.product.img} alt={item.product.name} />
+          <h3>{item.product.name}</h3>
           <p>${item.product.price.toFixed(2)}</p>
           <input
             type="number"
@@ -89,7 +130,15 @@ export default function Cart() {
           <button onClick={() => removeItem(item.product._id)}>Remove</button>
         </div>
       ))}
-      {cart.length > 0 && <h3>Total: ${totalPrice.toFixed(2)}</h3>}
+
+      {cart.length > 0 && (
+        <>
+          <h3>Total: ${totalPrice.toFixed(2)}</h3>
+          <button onClick={handleCheckout} className="CheckoutButton">
+            Checkout
+          </button>
+        </>
+      )}
     </div>
   );
 }

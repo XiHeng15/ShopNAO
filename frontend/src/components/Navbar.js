@@ -25,6 +25,7 @@ export default function Navbar() {
           </NavLink>
         )}
         <NavLink to="/cart" className="tab">Cart</NavLink>
+        <NavLink to="/orders" className="tab">Orders</NavLink>
         <NavLink to="/about" className="tab">About</NavLink>
 
         {!user.name ? (

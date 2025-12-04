@@ -17,49 +17,49 @@ async function seed() {
       {
         id: 0,
         name: "Hammer",
-        message: "Hammer",
-        price: 10,
+        price: 5,
         img: placeholder,
+        stock: 5,
 
       },
       {
         id: 1,
         name: "Cooler Hammer",
-        message: "Cooler Hammer",
-        price: 8,
+        price: 10,
         img: placeholder,
+        stock: 5,
 
       },
       {
         id: 2,
         name: "Coolest Hammer",
-        message: "Coolest Hammer",
         price: 12,
         img: placeholder,
+        stock: 5,
 
       },
             {
         id: 3,
         name: "Coolester Hammer",
-        message: "Coolester Hammer",
         price: 15,
         img: placeholder,
+        stock: 5,
 
       },
       {
         id: 4,
         name: "Coolestest Hammer",
-        message: "Coolestest Hammer",
         price: 20,
         img: placeholder,
+        stock: 5,
 
       },
       {
         id: 5,
         name: "Coolestester Hammer",
-        message: "Coolestester Hammer",
         price: 25,
         img: placeholder,
+        stock: 5,
 
       }
     ];

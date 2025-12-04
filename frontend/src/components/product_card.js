@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // product-card component
-export default function ProductCard({ id, img, message, price, review, stock }) {
+export default function ProductCard({ id, img, name, price, review, stock }) {//changed to use name instead of message
   const [count, setCount] = useState(1); // quantity
   const navigate = useNavigate();
   const token = localStorage.getItem("token"); // JWT
@@ -43,7 +43,7 @@ export default function ProductCard({ id, img, message, price, review, stock }) 
 
   return (
     <div className="Card" onClick={() => id && navigate(`/product/${id}`)}>
-      <h1>{message}</h1>
+      <h1>{name}</h1>
       <Item img={img} />
       <h3>${(price * count).toFixed(2)}</h3>
       <p>Stock: {stock}</p>
@@ -70,9 +70,9 @@ function Button({ handleAddToCart }) {
 }
 
 //product image
-function Item({ img }) {
+function Item({ img, name }) {
   const backendURL = "http://localhost:5000"; // backend base URL
-  return <img src={backendURL + img} alt="" />;
+  return <img src={backendURL + img} alt={name} />;
 }
 
 // Quantity counter

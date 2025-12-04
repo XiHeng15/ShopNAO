@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./AddProduct.css";
 
 export default function AddProduct() {
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState(""); //changed to use name instead of message (change in product model)
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [stock, setStock] = useState("")
@@ -15,7 +15,7 @@ export default function AddProduct() {
   };
 
   const handleSubmit = async () => {
-    if (!message || !price || !image || !stock) {
+    if (!name || !price || !image || !stock) {
       alert("Please fill in all required fields and select an image.");
       return;
     }
@@ -32,7 +32,7 @@ export default function AddProduct() {
       
 
     const formData = new FormData();
-    formData.append("message", message);
+    formData.append("name", name);
     formData.append("price", price);
     formData.append("image", image);
     formData.append("stock", stock);
@@ -72,8 +72,8 @@ export default function AddProduct() {
           <label>Product Name / Message:</label>
           <input
             type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <label>Price:</label>

@@ -4,19 +4,21 @@ Made by: WonUpped, XiHeng15, definitelynotcris, PlantEnjoyr, AmazingZeop, kozmaz
 
 Modules used:
 
+    "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.20.1",
     "multer": "^2.0.2",
-    "path": "^0.12.7"
-    "axios": "^1.13.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.4",
     "react-scripts": "^5.0.1",
+    "stripe": "^20.0.0"
+    "path": "^0.12.7"
     "web-vitals": "^2.1.4"
 
 To use:

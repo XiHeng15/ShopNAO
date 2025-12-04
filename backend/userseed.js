@@ -12,11 +12,11 @@ const seedUsers = async () => {
     await User.deleteMany({});
 
     // Create a sample user
-    const hashedPassword = await bcrypt.hash('password123', 10);
+    const hashedPassword = await bcrypt.hash('testing', 10);
 
     const user = new User({
-      name: 'Robin',
-      email: 'robin@example.com',
+      name: 'test',
+      email: 'testing@testing.com',
       password: hashedPassword,
       address: {
         street: '123 Main St',
