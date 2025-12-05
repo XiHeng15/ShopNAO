@@ -45,23 +45,10 @@ Project Backlog:
 
 	    - Home Page	        Product highlights, page summary
 		- Carousel			Sidescrolling list of products grouped in categories
-	    - User Dashboard	Tracks orders
-		- Checkout Page
+
 		- Adjust .css files for a cleaner appearance 
 
     Back End:
-        
-        - Checkout	        Shopping cart + Stripe checkout, backend
-							Order model
-							Order Route - Add order (route)
-										- Display order route
-
-							Checkout Route
-							Integrate Stripe API
-							Develop a Webhook?
-							Ensure Payment Encryption
-							Sign up for Stripe Development account 
-							(dont worry about saving user info)
 
 
 	Miscellaneous
