@@ -47,7 +47,7 @@ export default function Product() {
         body: JSON.stringify({ productId: id, quantity: count })
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Failed to add to cart");
+      if (!res.ok) throw new Error(data.name || "Failed to add to cart");
       alert("Added to cart! Quantity: " + count);
     } catch (err) {
       alert("Error: " + err.message);
@@ -60,14 +60,14 @@ export default function Product() {
     <div className="ProductPage">
       
       <div className="ProductTitle">
-        <h1>{product.message}</h1> 
+        <h1>{product.name}</h1> 
       </div>
 
       <div className="ProductContent"> 
         <div className="ProductImage">
           <img 
             src={`http://localhost:5000${product.img}`}
-            alt={product.message}
+            alt={product.name}
           />
         </div>
       

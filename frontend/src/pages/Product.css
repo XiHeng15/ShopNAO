@@ -2,8 +2,9 @@
 .ProductPage{
   text-align: center;
   font-family: sans-serif;
-  padding: 0;
+  padding: 20px;
   background-color: black;
+  min-height: 100vh;
 }
 
 h2 {

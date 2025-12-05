@@ -36,6 +36,7 @@ cd to backend, create a .env file and fill in with this format ():
 
 MONGO_URL="mongodb+srv://(user):(password)@(link)"
 PORT=5000
+CLIENT_URL="http://localhost:3000"
 JWT_SECRET=""
 STRIPE_WEBHOOK_SECRET=""
 STRIPE_SECRET_KEY=""
