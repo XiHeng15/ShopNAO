@@ -1,5 +1,8 @@
 
 .BusinessDashboard{
+  background-color: black;
+  color: white;
+  min-height: 100vh;  
   text-align: center;
   font-family: sans-serif;
   padding: 0;
@@ -7,6 +10,7 @@
 
 
 .BusinessDashboardHeader{
+    padding: 20px;
     background-color: black;
     min-height: 100vh;
     display: flex;
@@ -14,7 +18,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: #333333;
+    color: white;
 }
 
 h2 {
@@ -27,18 +31,6 @@ label {
   margin-bottom: 5px;
 }
 
-.Card {
-  background-color: #660066;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-radius: 12px;
-  padding: 10px;
-  width: 400px;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .AddProductButton {
     background-color: #660066;
     color: white;

@@ -7,8 +7,8 @@
   text-align: center;
   border-radius: 12px;
   padding: 10px;
-  width: 100%;             /* fill grid cell */
-  max-width: 250px;        /* cap card width */
+  min-width: 200px;     /* <--- THIS FIXES THE WRAPPING */
+  max-width: 250px;
   margin: 0 auto 20px auto; /* center card + spacing below */
   display: flex;
   flex-direction: column;
@@ -20,6 +20,7 @@
 }
 
 .Card h1, .Card h3, .Card p {
+  font-size: clamp(1rem, 2vw, 1.4rem);
   white-space: normal;     /* allow wrapping */
   text-overflow: clip;
   margin: 5px 0;

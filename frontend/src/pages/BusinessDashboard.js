@@ -103,6 +103,7 @@ export default function BusinessDashboard() { //dashboard now properly recieves 
                 <p><b>Status:</b> {order.status}</p>
                 <p><b>Ordered At:</b> {new Date(order.createdAt).toLocaleString()}</p>
                 <p><b>Total Earnings from this order:</b> ${order.totalAmount}</p>
+                <p><b>--------------------------------------------------------------------------</b></p>
               </div>
             ))}
           </div>

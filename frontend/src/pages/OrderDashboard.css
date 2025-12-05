@@ -1,0 +1,11 @@
+.OrderDashboard {
+    padding: 25px;
+    margin: 0 auto;
+    color: white;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.OrderList {
+    margin-bottom: 32px;
+}

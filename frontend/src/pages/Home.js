@@ -9,10 +9,16 @@ function Home() {
         <div className="Home-logo-container">
             <img src={logo} className="Home-logo" alt="logo" />
         </div>
-        <p>
-          Welcome to SHOPNAO!
-        </p>
+        <div className="about-box1">        
+          <img src={logo} alt="Logo" className="logo"/>
+          <p>
+            Welcome to SHOPNAO! This is an Amazon-like e-commerce web application where users can browse and sell products, add them to their cart, and make purchases.
+          </p>
+        </div>
       </header>
+
+
+
     </div>
   );
 }

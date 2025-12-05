@@ -73,18 +73,29 @@ function Browse() {
 
           {/* Added a new Category filter dropdown */}
           <Select
+            className="CategorySelect"
             options={allCategories}
             isMulti
             placeholder="Filter categories..."
             onChange={(selected) =>
               setSelectedCategories(selected.map((s) => s.value))
             }
-            styles={{
-              menu: (base) => ({
-                ...base,
-                color: "black",
-              }),
-            }}
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  color: "red",
+                  borderRadius: "25px",        // <-- this changes the dropdown box
+                }),
+                menu: (base) => ({
+                  ...base,
+                  borderRadius: "25px",        // <-- this changes the opened dropdown list
+                }),
+                menuList: (base) => ({
+                  ...base,
+                  color: "grey", //changed to fix dropdown text from being white on white for some reason
+                  borderRadius: "25px",
+                }),
+              }}
           />
 
         </div>

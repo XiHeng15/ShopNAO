@@ -3,7 +3,7 @@
 }
 
 .Home-logo {
-  height: 80vmin;
+  height: 50vmin;
   pointer-events: none;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .Home-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,4 +46,19 @@
   to {
     transform: scale(1.1);
   }
+}
+
+.about-box1 { /* added for home page, stolen from about.css */
+    
+    display: flex;             /* side-by-side layout */
+    align-items: center;       /* vertically align image + text */
+    gap: 20px;                 /* space between image and text */
+    
+    border: 2px solid #ccc;       /* visible box */
+    padding: 20px;                  /* space inside */
+    border-radius: 12px;            /* rounded corners */
+    width: 75%;                     /* set a width or let it auto-size */
+    background-color: #660066;    /* light background */
+    margin: 20px auto;              /* center the box */
+
 }
