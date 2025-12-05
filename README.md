@@ -16,6 +16,7 @@ Modules used:
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.4",
+    "react-select": "^5.10.2",
     "react-scripts": "^5.0.1",
     "stripe": "^20.0.0"
     "path": "^0.12.7"
@@ -39,14 +40,12 @@ Then cd to the front end, run npm install, run  npm start to start our react fro
 
 With this, you have a working shopping interface! Populate your database with users and products as much as you'd like! 
 
-Project Backlog:
+Project Future Backlog:
 
-    Front End:
+    Front End: 
 
-	    - Home Page	        Product highlights, page summary
+	    - Home Page	        Product highlights
 		- Carousel			Sidescrolling list of products grouped in categories
-
-		- Adjust .css files for a cleaner appearance 
 
     Back End:
 
