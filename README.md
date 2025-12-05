@@ -22,23 +22,34 @@ Modules used:
     "path": "^0.12.7"
     "web-vitals": "^2.1.4"
 
+Requires a Stripe and MongoDBAtlas Account to run without modifications.
+
 To use:
 
-cd to backend, create a .env file and fill in with this format:
+cd to backend, create a .env file and fill in with this format ():
 
 --------------------------------------------------------------------------------
 
 # Must replace (user), (password), and (link) with your MongoDB Atlas details.
+# Must replace STRIPE_WEBHOOK_SECRET with the key you receive from Stripe.
+# Must replace STRIPE_SECRET_KEY with the key you recieve from Stripe.
 
-MONGO_URL="mongodb+srv://(user):(password)(link)
-PORT=(choose a port)
+MONGO_URL="mongodb+srv://(user):(password)(link)"
+PORT=5000
+JWT_SECRET=""
+STRIPE_WEBHOOK_SECRET=""
+STRIPE_SECRET_KEY=""
 
 --------------------------------------------------------------------------------
+
+TRUSTED TESTERS WILL BE SUPPLIED WITH A FILLED IN .ENV AND TEST ACCOUNTS TO RUN THE CODE USING OUR OWN DATABASE. 
+
+Install stripe-cli on your computer. When installed, run stripe -listen (Depending on your OS this will be different. On Linux/Unix once installed via a package manager just run stripe -listen. On Windows you must open powershell and cd to the exact folder the stripe.exe is located and run /stripe.exe -listen). WHen prompted, make sure to login with the stripe account that uses the secret keys in your env.
 
 With this setup, when cd'd into the backend, run npm install and npm start to get the backend running.
 Then cd to the front end, run npm install, run  npm start to start our react frontend locally.
 
-With this, you have a working shopping interface! Populate your database with users and products as much as you'd like! 
+With this, you have a working shopping interface! Populate your database with users and products as much as you'd like! (runs on localhost:3000 and localhost:5000, may need modification to work for your own usecase!)
 
 Project Future Backlog:
 
