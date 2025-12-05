@@ -52,3 +52,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.Categories {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}

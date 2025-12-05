@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 import "./AddProduct.css";
 
 export default function AddProduct() {
@@ -7,7 +8,21 @@ export default function AddProduct() {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [stock, setStock] = useState("")
+  const [categories, setCategories] = useState([]); //added categories state
   const navigate = useNavigate();
+
+
+  const CATEGORY_OPTIONS = [
+    { value: "Food", label: "Food" },
+    { value: "Clothing", label: "Clothing" },
+    { value: "Electronics", label: "Electronics" },
+    { value: "Beauty", label: "Beauty" },
+    { value: "Sports", label: "Sports" },
+    { value: "Home", label: "Home" },
+    { value: "Books", label: "Books" },
+  ];
+
+
 
   // handle file input
   const handleFileChange = (e) => {
@@ -15,7 +30,7 @@ export default function AddProduct() {
   };
 
   const handleSubmit = async () => {
-    if (!name || !price || !image || !stock) {
+    if (!name || !price || !image || !stock || !categories) {
       alert("Please fill in all required fields and select an image.");
       return;
     }
@@ -36,6 +51,7 @@ export default function AddProduct() {
     formData.append("price", price);
     formData.append("image", image);
     formData.append("stock", stock);
+    categories.forEach((cat) => formData.append("categories", cat)); //send categories as JSON string
 
     try {
 
@@ -92,6 +108,22 @@ export default function AddProduct() {
             onChange={(e) => setStock(parseFloat(e.target.value))}
             min="0"          // prevents negative values
             step="1"      // noy allows whole numbers
+          />
+
+          <label>Categories</label>
+          <Select
+            isMulti
+            options={CATEGORY_OPTIONS}
+            value={CATEGORY_OPTIONS.filter((opt) => categories.includes(opt.value))}
+            onChange={(selected) =>
+              setCategories(selected.map((opt) => opt.value))
+            }
+            styles={{
+              menu: (base) => ({
+                ...base,
+                color: "black",
+              }),
+            }}
           />
 
           <label>Image:</label>

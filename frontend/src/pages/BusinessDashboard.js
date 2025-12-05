@@ -71,10 +71,11 @@ export default function BusinessDashboard() { //dashboard now properly recieves 
               <div key={p._id} className="ProductItem">
                 <img
                   src={backendURL + p.img}
-                  alt={p.message}
+                  alt={p.name}
                   className="ProductImage"
                 />
-                <h3>{p.message}</h3>
+                <h3>{p.name}</h3>
+                <p><b>Categories:</b> {p.categories.join(", ")}</p>
                 <p>${p.price.toFixed(2)}</p>
               </div>
             ))}

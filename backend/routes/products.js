@@ -81,9 +81,16 @@ router.get('/:id', async (req, res) => {
 router.post('/add', authenticateBusiness, upload.single('image'), async (req, res) => {
   try {
     const id = Date.now();
-    const { price, name, stock } = req.body; //changed to use name
+    const categories = Array.isArray(req.body.categories)
+      ? req.body.categories
+      : [req.body.categories];
+    const { price, name, stock } = req.body; //changed to use name, added categories
     const owner = req.userId; // set by authenticateBusiness
     const img = req.file ? `/uploads/${req.file.filename}` : '';
+
+    if (!name) {
+      return res.status(400).json({ error: "Name is required." });
+    }
 
     if (price < 0) {
       return res.status(400).json({ message: "Price cannot be negative" });
@@ -93,7 +100,11 @@ router.post('/add', authenticateBusiness, upload.single('image'), async (req, re
       return res.status(400).json({message: "Stock cannot be negative"});
     }
 
-    const product = new Product({ price, name, owner, img, id, stock }); //changed to reference name
+    if (!categories || categories.length === 0) {
+      return res.status(400).json({ error: "At least one category is required" });
+    }
+
+    const product = new Product({ price, name, owner, img, id, stock, categories }); //changed to reference name
     await product.save();
 
     res.status(201).json({ message: 'Product added!', product });

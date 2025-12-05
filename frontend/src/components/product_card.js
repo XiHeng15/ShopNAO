@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // product-card component
-export default function ProductCard({ id, img, name, price, review, stock }) {//changed to use name instead of message
+export default function ProductCard({ id, img, name, price, review, stock, categories }) {//changed to use name instead of message
   const [count, setCount] = useState(1); // quantity
   const navigate = useNavigate();
   const token = localStorage.getItem("token"); // JWT
@@ -47,7 +47,7 @@ export default function ProductCard({ id, img, name, price, review, stock }) {//
       <Item img={img} />
       <h3>${(price * count).toFixed(2)}</h3>
       <p>Stock: {stock}</p>
-
+      <p className="Categories"><b>Categories:</b> {categories.join(", ")}</p>
       <Button handleAddToCart={handleAddToCart} />
       <p>Quantity: {count}</p>
       <Counter count={count} setCount={setCount} handlePlusButton={handlePlusButton} handleMinusButton={handleMinusButton} />
