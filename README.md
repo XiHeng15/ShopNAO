@@ -34,7 +34,7 @@ cd to backend, create a .env file and fill in with this format ():
 # Must replace STRIPE_WEBHOOK_SECRET with the key you receive from Stripe.
 # Must replace STRIPE_SECRET_KEY with the key you recieve from Stripe.
 
-MONGO_URL="mongodb+srv://(user):(password)(link)"
+MONGO_URL="mongodb+srv://(user):(password)@(link)"
 PORT=5000
 JWT_SECRET=""
 STRIPE_WEBHOOK_SECRET=""
@@ -42,9 +42,15 @@ STRIPE_SECRET_KEY=""
 
 --------------------------------------------------------------------------------
 
-TRUSTED TESTERS WILL BE SUPPLIED WITH A FILLED IN .ENV AND TEST ACCOUNTS TO RUN THE CODE USING OUR OWN DATABASE. 
+TESTERS LOOKING TO USE OUR SEEDED EXAMPLE DATABASE JUST NEED TO RENAME THE .env.testing to .env THAT WE HAVE PROVIDED AND RUN STRIPE TO FILL IN THE STRIPE_WEBHOOK_SECRET VAR!!!
 
-Install stripe-cli on your computer. When installed, run stripe -listen (Depending on your OS this will be different. On Linux/Unix once installed via a package manager just run stripe -listen. On Windows you must open powershell and cd to the exact folder the stripe.exe is located and run /stripe.exe -listen). WHen prompted, make sure to login with the stripe account that uses the secret keys in your env.
+Install stripe-cli on your computer. When installed, run .\stripe.exe listen (Depending on your OS this will be different. On Linux/Unix once installed via a package manager just run stripe listen. On Windows you must open powershell and cd to the exact folder the stripe.exe is located and run .\stripe.exe listen). When prompted, make sure to login with the stripe account that uses the secret keys in your env.
+
+Once logged in through the CLI, go to your .env and  place the STRIPE_WEBHOOK_SECRET key you recieve from the CLI. (Check your powershell/bash output)
+
+    PS C:\Users\*redacted*\Downloads\stripe_1.33.0_windows_x86_64> .\stripe.exe listen
+    > Ready! You are using Stripe API Version [2025-11-17.clover]. Your webhook signing secret is whsec_...................................... (^C to quit)
+
 
 With this setup, when cd'd into the backend, run npm install and npm start to get the backend running.
 Then cd to the front end, run npm install, run  npm start to start our react frontend locally.
